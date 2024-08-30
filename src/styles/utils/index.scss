@@ -1,0 +1,11 @@
+@mixin hover() {
+	& {
+		cursor: pointer;
+		transition: all 0.3s ease-in-out;
+
+		&:hover {
+			color: var(--text-color);
+			background-color: var(--accent);
+		}
+	}
+}

@@ -1,0 +1,39 @@
+@use "./pages/nav.scss";
+@use "./pages/app.scss";
+
+:root {
+	--bg-color: #f3f4f6;
+	--sub-section-color: rgb(192, 191, 190);
+	--text-color: #1c1c1c;
+
+	--text-color-invert: #c1c1c1;
+	--accent: #d1d5db;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	transition: transition 0.3s ease-in-out;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--text-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--accent);
+	border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: darkseagreen;
+}
