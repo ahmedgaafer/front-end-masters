@@ -1,9 +1,12 @@
 import { NavProps } from "./types";
 
+import RecipePage from "../../CHALLENGES/recipe-page-main/solution";
+import Home from "../../Pages/Home";
+
 export const nav: NavProps = {
-	Home: <div>Home</div>,
+	Home: <Home />,
 	Noob: {
-		p1: <div>p1</div>,
+		"recipe page": <RecipePage />,
 		p2: <div>p2</div>,
 		p3: <div>p3</div>,
 		p4: <div>p4</div>,

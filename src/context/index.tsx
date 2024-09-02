@@ -1,4 +1,5 @@
 import React, { createContext, ReactNode, useState } from "react";
+import Home from "../Pages/Home";
 
 interface AppProviderProps {
 	children: ReactNode; // Define the type for children
@@ -10,7 +11,7 @@ export interface ContextType {
 }
 
 const _context = {
-	ActiveComponent: null,
+	ActiveComponent: <Home />,
 };
 
 export const AppContext = createContext<ContextType | undefined>(undefined);

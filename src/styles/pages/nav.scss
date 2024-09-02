@@ -125,13 +125,12 @@ nav {
 		.accordion-content {
 			max-height: 0;
 			overflow: hidden;
-			background-color: var(--bg-color);
+			// background-color: var(--bg-color);
 			color: var(--text-color);
 
 			overflow-y: auto;
 
 			.page-item {
-				background-color: var(--bg-color);
 				@include utils.hover();
 			}
 		}
@@ -139,6 +138,7 @@ nav {
 		&.active {
 			.accordion-header {
 				filter: invert(1);
+				border-radius: 10px 10px 0px 0;
 
 				svg {
 					transform: rotate(180deg);
@@ -146,10 +146,10 @@ nav {
 			}
 			.accordion-content {
 				max-height: 100px; // Adjust based on your content
-				background-color: var(--sub-section-color);
-
+				border: 2px solid var(--text-color);
+				border-right: none;
+				border-top: none;
 				.page-item {
-					background-color: var(--sub-section-color);
 					@include utils.hover();
 				}
 			}

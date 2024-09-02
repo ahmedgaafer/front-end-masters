@@ -25,7 +25,11 @@ const genLinks = (setContext: React.Dispatch<React.SetStateAction<any>>) => {
 			{links.map(([linkTitle, value]) => {
 				if (React.isValidElement(value)) {
 					return (
-						<div className="page-item" onClick={() => onLinkClick(value)}>
+						<div
+							className="page-item"
+							onClick={() => onLinkClick(value)}
+							key={linkTitle}
+						>
 							{linkTitle}
 						</div>
 					);
@@ -34,6 +38,7 @@ const genLinks = (setContext: React.Dispatch<React.SetStateAction<any>>) => {
 
 					return (
 						<div
+							key={linkTitle}
 							onClick={() => handleSubMenuClick(linkTitle)}
 							className={`accordion-item ${
 								open === linkTitle ? "active" : "close"
@@ -46,6 +51,7 @@ const genLinks = (setContext: React.Dispatch<React.SetStateAction<any>>) => {
 							<div className={`accordion-content `}>
 								{subList.map(([subLinkTitle, Component]) => (
 									<div
+										key={subLinkTitle}
 										className="page-item"
 										onClick={(e) => {
 											e.stopPropagation();
