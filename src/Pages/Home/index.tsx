@@ -1,7 +1,7 @@
 import React from "react";
 import { FcHome } from "react-icons/fc";
 import { encodeSvgToDataUrl } from "../../assets/utils";
-import { useDocumentTitleAndFavicon } from "../../CHALLENGES/utils";
+import { useDocumentTitleAndFavicon } from "../../Components/Attribution";
 
 const Home: React.FC = () => {
 	useDocumentTitleAndFavicon(

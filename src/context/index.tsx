@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode, useState } from "react";
-import Home from "../Pages/Home";
+import { NavProps } from "../Components/Navbar/types";
+import { getCurrentComponent } from "../Components/Attribution";
 
 interface AppProviderProps {
 	children: ReactNode; // Define the type for children
@@ -11,7 +12,7 @@ export interface ContextType {
 }
 
 const _context = {
-	ActiveComponent: <Home />,
+	ActiveComponent: getCurrentComponent(),
 };
 
 export const AppContext = createContext<ContextType | undefined>(undefined);

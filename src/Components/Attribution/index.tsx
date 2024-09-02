@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { nav } from "../Navbar/NavStructure";
+import { ReactObject } from "../Navbar/types";
 
 //#region attribution
 export const Attribution: React.FC = () => {
@@ -36,3 +38,27 @@ export const useDocumentTitleAndFavicon = (title: string, favicon: string) => {
 };
 
 //#endregion
+
+export const getCurrentComponent = (): React.ReactNode => {
+	const urlParams = new URLSearchParams(window.location.search);
+	const category = urlParams.get("category");
+	const page = urlParams.get("page");
+
+	let resolvedPage = nav.Home;
+	if (category && page) {
+		const currentCategory = nav[category] ? nav[category] : nav.Home;
+
+		if (React.isValidElement(currentCategory)) {
+			resolvedPage = currentCategory;
+		} else {
+			resolvedPage = (currentCategory as ReactObject)[page]
+				? (currentCategory as ReactObject)[page]
+				: nav.Home;
+		}
+	} else if (page) {
+		// TODO: make it fault to error page
+		resolvedPage = nav[page] ? nav[page] : nav.Home;
+	}
+
+	return resolvedPage as React.ReactNode;
+};

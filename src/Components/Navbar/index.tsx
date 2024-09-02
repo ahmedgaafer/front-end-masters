@@ -10,7 +10,23 @@ const links = Object.entries(nav);
 const genLinks = (setContext: React.Dispatch<React.SetStateAction<any>>) => {
 	const [open, setOpen] = useState("");
 
-	const onLinkClick = (el: React.ReactNode) => {
+	const onLinkClick = (
+		el: React.ReactNode,
+		pageName: string,
+		category?: string
+	) => {
+		const urlParams = new URLSearchParams(window.location.search);
+
+		if (urlParams.has("page")) {
+			urlParams.delete("page");
+		}
+
+		window.history.pushState(
+			{},
+			"",
+			`?page=${pageName}${category ? `&category=${category}` : ""}`
+		);
+
 		setContext({
 			ActiveComponent: el,
 		});
@@ -27,7 +43,7 @@ const genLinks = (setContext: React.Dispatch<React.SetStateAction<any>>) => {
 					return (
 						<div
 							className="page-item"
-							onClick={() => onLinkClick(value)}
+							onClick={() => onLinkClick(value, linkTitle)}
 							key={linkTitle}
 						>
 							{linkTitle}
@@ -55,10 +71,10 @@ const genLinks = (setContext: React.Dispatch<React.SetStateAction<any>>) => {
 										className="page-item"
 										onClick={(e) => {
 											e.stopPropagation();
-											onLinkClick(Component);
+											onLinkClick(Component, subLinkTitle, linkTitle);
 										}}
 									>
-										{subLinkTitle}
+										{subLinkTitle.split("-").join(" ")}
 									</div>
 								))}
 							</div>

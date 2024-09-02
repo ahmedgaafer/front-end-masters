@@ -1,6 +1,6 @@
 import React from "react";
 
-type ReactObject = {
+export type ReactObject = {
 	[key: string]: React.ReactNode;
 };
 

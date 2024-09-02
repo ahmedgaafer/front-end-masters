@@ -2,7 +2,7 @@ import React from "react";
 
 import PageIcon from "../assets/images/favicon-32x32.png";
 import CardImage from "../assets/images/image-omelette.jpeg";
-import { useDocumentTitleAndFavicon } from "../../utils";
+import { useDocumentTitleAndFavicon } from "../../../Components/Attribution";
 import "./index.scss";
 
 const RecipePage: React.FC = () => {

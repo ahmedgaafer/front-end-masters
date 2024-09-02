@@ -1,7 +1,23 @@
+$color: steelblue;
+
 #MENE_PAGE_WRAP_ID {
-	border: 10px solid lime;
+	border: 10px solid $color;
 	height: 100vh;
 	width: 100vw;
 
 	overflow: hidden;
+}
+
+.attribution {
+	font-size: 11px;
+	background-color: #ffffffa5;
+
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	z-index: 1;
+
+	a {
+		color: $color;
+	}
 }

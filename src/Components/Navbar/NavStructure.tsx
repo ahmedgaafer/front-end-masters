@@ -6,7 +6,7 @@ import Home from "../../Pages/Home";
 export const nav: NavProps = {
 	Home: <Home />,
 	Noob: {
-		"recipe page": <RecipePage />,
+		"Recipe Page": <RecipePage />,
 		p2: <div>p2</div>,
 		p3: <div>p3</div>,
 		p4: <div>p4</div>,
