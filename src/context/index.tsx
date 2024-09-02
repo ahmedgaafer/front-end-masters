@@ -1,5 +1,4 @@
 import React, { createContext, ReactNode, useState } from "react";
-import { NavProps } from "../Components/Navbar/types";
 import { getCurrentComponent } from "../Components/Attribution";
 
 interface AppProviderProps {
