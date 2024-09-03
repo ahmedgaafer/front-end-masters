@@ -10,7 +10,10 @@ export const Attribution: React.FC = () => {
 				Frontend Mentor
 			</a>
 			. Coded by{" "}
-			<a href="https://github.com/ahmedgaafer" target="_blank">
+			<a
+				href="https://www.frontendmentor.io/profile/ahmedgaafer"
+				target="_blank"
+			>
 				Ahmed Gaafer
 			</a>
 			.

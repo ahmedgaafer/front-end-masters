@@ -22,7 +22,6 @@ type TNavProps = {
 
 export const componentsMap = {
 	Home: <Home />,
-	About: <div>About</div>,
 	"noob.recipePage": <RecipePage />,
 	"semiNoob.p2": <div>p2</div>,
 	"normal.p4": <div>p4</div>,
@@ -84,10 +83,5 @@ export const nav: TNavProps[] = [
 				key: "how.p5",
 			},
 		],
-	},
-
-	{
-		label: "About",
-		key: "About",
 	},
 ];
