@@ -1,27 +1,47 @@
 import React, { createContext, ReactNode, useState } from "react";
 import { getCurrentComponent } from "../Components/Attribution";
+import { TComponentKey } from "../Components/Navbar/NavStructure";
 
 interface AppProviderProps {
-	children: ReactNode; // Define the type for children
+	children: ReactNode;
 }
 
-export interface ContextType {
-	context: any; // Replace `any` with a more specific type
-	setContext: React.Dispatch<React.SetStateAction<any>>; // Replace `any` with the same type as `context`
-}
-
-const _context = {
-	ActiveComponent: getCurrentComponent(),
+export type AppContext = {
+	activeComponent: TComponentKey;
+	setActiveComponent: (el: TComponentKey) => void;
 };
 
-export const AppContext = createContext<ContextType | undefined>(undefined);
+export const AppContext = createContext<AppContext | null>(null);
 
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
-	const [context, setContext] = useState<any>(_context);
+	const [activeComponent, _setActiveComponent] = useState<TComponentKey>(
+		getCurrentComponent()
+	);
+
+	const setActiveComponent = (ComponentKey: TComponentKey) => {
+		const urlParams = new URLSearchParams(window.location.search);
+
+		if (urlParams.has("componentKey")) {
+			urlParams.delete("componentKey");
+		}
+
+		window.history.pushState({}, "", `?componentKey=${ComponentKey}`);
+		_setActiveComponent(ComponentKey);
+	};
 
 	return (
-		<AppContext.Provider value={{ context, setContext }}>
+		<AppContext.Provider value={{ activeComponent, setActiveComponent }}>
 			{children}
 		</AppContext.Provider>
 	);
+};
+
+export const useAppContext = () => {
+	const context = React.useContext(AppContext);
+
+	if (!context) {
+		throw new Error("useAppContext must be used within a AppProvider");
+	}
+
+	return context;
 };

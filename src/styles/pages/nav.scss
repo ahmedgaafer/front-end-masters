@@ -147,7 +147,7 @@ nav {
 			.accordion-content {
 				max-height: 100px; // Adjust based on your content
 				border: 2px solid var(--text-color);
-				border-right: none;
+
 				border-top: none;
 				.page-item {
 					@include utils.hover();

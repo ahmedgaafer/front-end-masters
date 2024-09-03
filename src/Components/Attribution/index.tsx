@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { nav } from "../Navbar/NavStructure";
-import { ReactObject } from "../Navbar/types";
+import { componentsMap, TComponentKey } from "../Navbar/NavStructure";
 
 //#region attribution
 export const Attribution: React.FC = () => {
@@ -10,7 +9,11 @@ export const Attribution: React.FC = () => {
 			<a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
 				Frontend Mentor
 			</a>
-			. Coded by <a href="https://github.com/ahmedgaafer">Ahmed Gaafer</a>.
+			. Coded by{" "}
+			<a href="https://github.com/ahmedgaafer" target="_blank">
+				Ahmed Gaafer
+			</a>
+			.
 		</div>
 	);
 };
@@ -39,26 +42,16 @@ export const useDocumentTitleAndFavicon = (title: string, favicon: string) => {
 
 //#endregion
 
-export const getCurrentComponent = (): React.ReactNode => {
+export const getCurrentComponent = (): TComponentKey => {
 	const urlParams = new URLSearchParams(window.location.search);
-	const category = urlParams.get("category");
-	const page = urlParams.get("page");
+	const componentKey = urlParams.get("componentKey");
+	const faultPage = "Home";
 
-	let resolvedPage = nav.Home;
-	if (category && page) {
-		const currentCategory = nav[category] ? nav[category] : nav.Home;
+	if (!componentKey) return faultPage;
 
-		if (React.isValidElement(currentCategory)) {
-			resolvedPage = currentCategory;
-		} else {
-			resolvedPage = (currentCategory as ReactObject)[page]
-				? (currentCategory as ReactObject)[page]
-				: nav.Home;
-		}
-	} else if (page) {
-		// TODO: make it fault to error page
-		resolvedPage = nav[page] ? nav[page] : nav.Home;
+	if (componentsMap.hasOwnProperty(componentKey)) {
+		return componentKey as TComponentKey;
 	}
 
-	return resolvedPage as React.ReactNode;
+	return faultPage;
 };
